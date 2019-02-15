@@ -14,21 +14,23 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        controller: 'MainCtrl'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+        controller: 'AboutCtrl'
       })
       .when('/contact', {
         templateUrl: 'views/contact.html',
-        controller: 'Contactctrl',
-        controllerAs: 'contact'
+        controller: 'ContactCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
       $locationProvider.hashPrefix('');
-  });
+  })
+  .config(['$httpProvider', function ($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    $httpProvider.defaults.headers.post['Content-Type'] = "application/json;charset=UTF-8";
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  }]);
