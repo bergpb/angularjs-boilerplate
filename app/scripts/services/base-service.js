@@ -8,37 +8,33 @@
  * Service in the angularCourseApp.
  */
 angular.module('angularCourseApp')
-  .service('BaseService', ["$http", "$location", "$rootScope", "Config", function ($http, $location, $rootScope, config) {
-    this.create = function create(url, entity) {
-        var url_base = config.api + url;
-        return $http.post(url_base, entity);
+  .service('baseService', ["$http", "$location", "$rootScope",
+    function ($http, $location, $rootScope) {
+    this.create = function create(url, data) {
+        return $http.post(url, data);
     }
 
-    this.update = function update(url, id, entity) {
-        var url_base = config.api + url + id;
-        return $http.put(url_base, entity);
-    }
-
-    this.show = function show(url, idEntity) {
-        var url_base = config.api + url;
-        return $http.get(url_base + idEntity);
+    this.show = function show(url, id) {
+        return $http.get(url + id);
     }
 
     this.list = function list(url, params) {
-        var url_base = config.api + url + "pesquisar";
-        return $http.post(url_base, params);
+      return $http.get(url, params);
     }
 
-    this.destroy = function destroy(url, idEntity) {
-        var url_base = config.api + url
-        return $http.delete(url_base + "/" + idEntity);
+    this.update = function update(url, id, data) {
+        return $http.put(url, data);
+    }
+
+    this.destroy = function destroy(url, id) {
+        return $http.delete(url + id);
     }
 
     return {
         create: this.create,
-        update: this.update,
         show: this.show,
         list: this.list,
+        update: this.update,
         destroy: this.destroy
     }
 }]);

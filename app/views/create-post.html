@@ -1,1 +1,11 @@
-<p>This is the create-post view.</p>
+<form>
+  <div class="form-group">
+    <label for="titulo">Título:</label>
+    <input placeholder="Título" type="text" ng-model="post.title" class="form-control" id="titulo">
+  </div>
+  <div class="form-group">
+    <label for="descricao">Descrição:</label>
+    <input placeholder="Descrição" type="text" ng-model="post.description" class="form-control" id="descricao">
+  </div>
+  <button ng-click="teste()" type="submit" class="btn btn-default">Salvar</button>
+</form>

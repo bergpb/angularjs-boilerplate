@@ -1,1 +1,22 @@
-<p>This is the posts view.</p>
+<table class="table table-reponsive table-striped" ng-init="getData()">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Título</th>
+      <th>Descição</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="post in posts">
+      <td align="left">{{ post.id }}</td>
+      <td align="left">{{ post.title }}</td>
+      <td align="left">{{ post.description }}</td>
+      <td>
+        <button ng-click="showData(post.id)" class="btn btn-success">Exibir</button>
+        <button ng-click="updateData(post.id)" class="btn btn-info">Editar</button>
+        <button ng-click="destroyData(post.id)" class="btn btn-danger">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
