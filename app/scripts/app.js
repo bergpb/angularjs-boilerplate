@@ -16,14 +16,6 @@ angular
           templateUrl: 'views/main.html',
           controller: 'MainCtrl'
         })
-        .when('/create', {
-          templateUrl: 'views/create-post.html',
-          controller: 'PostCtrl'
-        })
-        .when('/edit/:id', {
-          templateUrl: 'views/edit-post.html',
-          controller: 'PostCtrl'
-        })
         .when('/posts', {
           templateUrl: 'views/posts.html',
           controller: 'PostCtrl'

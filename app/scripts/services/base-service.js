@@ -8,7 +8,7 @@
  * Service in the angularCourseApp.
  */
 angular.module('angularCourseApp')
-  .service('baseService', ["$http", "$location", "$rootScope",
+  .service('baseService', ['$http', '$location', '$rootScope',
     function ($http, $location, $rootScope) {
     this.create = function create(url, data) {
         return $http.post(url, data);
@@ -22,7 +22,7 @@ angular.module('angularCourseApp')
       return $http.get(url, params);
     }
 
-    this.update = function update(url, id, data) {
+    this.update = function update(url, data) {
         return $http.put(url, data);
     }
 
