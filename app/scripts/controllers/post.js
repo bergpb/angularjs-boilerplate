@@ -9,19 +9,20 @@
  */
 angular.module('angularCourseApp')
   .controller('PostCtrl', ["$scope", "$rootScope", "baseService", function ($scope, $rootScope, baseService) {
-    $scope.url = "localhost:3000";
+    $scope.url = "http://127.0.0.1:3000";
     $scope.posts = [];
 
     $scope.getData = function(){
       console.log('get data');
       baseService.list($scope.url)
-      .then(function () {
-        $scope.posts = [];
-        console.log($scope.posts);
-      },
-      function (error){
-        console.log(error);
-      });
+      if (response.status = 200) {
+          $scope.post = response.data;
+          console.log($scope.post);
+        }
+      })
+      .error(function (response, status, headers, config, scope) {
+        console.log(response);
+      })
     };
 
     $scope.showData = function(id){
