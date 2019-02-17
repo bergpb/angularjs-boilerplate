@@ -1,4 +1,7 @@
 <div ng-init="getAll()">
+  <div class="mt-4 mb-4 col-md-6 col-sm-6 offset-md-5 offset-sm-5 refresh-icon" ng-if="refreshing">
+    <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+  </div>
   <div ng-if="posts.length > 0">
     <table class="table">
       <thead>
@@ -15,10 +18,10 @@
           <td align="left">{{ post.title }}</td>
           <td align="left">{{ post.content }}</td>
           <td>
-            <button ng-href="/" ng-click="show(post.id)" data-toggle="modal" data-target="#modalPost" class="btn btn-success">
+            <button ng-href="/" title="Exibir" ng-click="showPost(post.id)" data-toggle="modal" data-target="#modalPost" class="btn btn-success">
               <i class="fa fa-eye" aria-hidden="true"></i>
             </button>
-            <button ng-href="/" ng-click="destroy(post.id)" class="btn btn-danger">
+            <button ng-href="/" title="Remover" ng-click="destroyPost(post.id)" class="btn btn-danger">
               <i class="fa fa-trash-o" aria-hidden="true"></i>
             </button>
           </td>
@@ -26,22 +29,21 @@
       </tbody>
     </table>
   </div>
-  <div class="mt-4 mb-4 col-md-6 offset-md-5" ng-if="refreshing">
-    <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
-  </div>
   <div class="mt-4 mb-4 col-md-6 offset-md-5" ng-if="posts != undefined && posts.length == 0">
     <p>Sem posts para exibir.</p>
   </div>
 </div>
 <div>
-  <button ng-click="new()" class="btn btn-success" data-toggle="modal" data-target="#modalPost">Novo Post</button>
+  <button ng-show="!refreshing" title="Novo Post" ng-click="new()" class="btn btn-success" data-toggle="modal" data-target="#modalPost">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+  </button>
 </div>
-<div class="modal fade" id="modalPost" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalPost" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalPost">Novo Post</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button title="Fechar" ng-click="cancel()" type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -50,26 +52,28 @@
           <form>
             <div class="form-group">
               <label for="titulo">Título:</label>
-              <input ng-disabled="showing" type="text" ng-model="post.title" class="form-control" id="titulo">
+              <input ng-disabled="show" type="text" ng-model="post.title" class="form-control" id="titulo">
             </div>
             <div class="form-group">
               <label for="conteudo">Conteúdo:</label>
-              <textarea ng-disabled="showing" type="text" ng-model="post.content" class="form-control" id="conteudo"></textarea>
+              <textarea ng-disabled="show" type="text" ng-model="post.content" class="form-control" id="conteudo"></textarea>
             </div>
           </form>
         </div>
       </div>
       <div class="modal-footer">
-        <button ng-click="create()" ng-show="creating" type="submit" data-dismiss="modal" class="btn btn-success">
-          Criar
+        <button title="Novo Post" ng-click="newPost()" ng-show="create" type="submit" data-dismiss="modal" class="btn btn-success">
+          <i class="fa fa-save" aria-hidden="true"></i>
         </button>
-        <button ng-click="update()" ng-show="updating && !creating" type="submit" data-dismiss="modal" class="btn btn-success">
-          Salvar
+        <button title="Atualizar" ng-click="updatePost()" ng-show="update" type="submit" data-dismiss="modal" class="btn btn-success">
+          <i class="fa fa-save" aria-hidden="true"></i>
         </button>
-        <button ng-click="edit()" ng-show="showing" type="submit" class="btn btn-info">
-          Editar
+        <button title="Editar" ng-click="editPost()" ng-show="edit" type="submit" class="btn btn-info">
+          <i class="fa fa-edit" aria-hidden="true"></i>
         </button>
-        <button ng-click="cancel()" type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+        <button title="Cancelar" ng-click="cancel()" type="button" class="btn btn-danger" data-dismiss="modal">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
   </div>

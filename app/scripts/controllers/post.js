@@ -2,13 +2,14 @@
 
 /**
  * @ngdoc function
- * @name angularCourseApp.controller:PostCtrl
+ * @name angularBoilerplate.controller:PostCtrl
  * @description
  * # PostCtrl
- * Controller of the angularCourseApp
+ * Controller of the angularBoilerplate
  */
-angular.module('angularCourseApp')
-  .controller('PostCtrl', ['$scope', '$rootScope', 'baseService', function ($scope, $rootScope, baseService) {
+angular.module('angularBoilerplate')
+  .controller('PostCtrl', ['$scope', 'baseService',
+  function ($scope, baseService) {
     $scope.url = 'http://127.0.0.1:3000/';
 
     $scope.getAll = function(){
@@ -19,36 +20,31 @@ angular.module('angularCourseApp')
       $scope.refreshing = true;
       baseService.list($scope.url)
       .success(function (response) {
-        if (response.status = 200) {
+        if(response.status === "SUCCESS") {
           $scope.posts = response.data;
-          $scope.refreshing = false;
         }
       })
       .error(function (response, status, headers, config, scope) {
         console.log(response);
       })
+      $scope.refreshing = !$scope.refreshing;
     }
 
     $scope.new = function(){
       $scope.post = '';
-      $scope.showing = false;
-      $scope.creating = true;
+      actions(false, true, false, false);
     }
 
-    $scope.edit = function(){
-      $scope.creating = false;
-      $scope.showing = false;
-      $scope.updating = true;
+    $scope.editPost = function(){
+      actions(false, false, false, true);
     }
 
-    $scope.show = function(id){
-      $scope.refreshing = true;
-      $scope.showing = true;
+    $scope.showPost = function(id){
+      actions(true, false, true, false);
       baseService.show($scope.url + 'show/', id)
       .success(function (response) {
-        if (response.status = 200) {
+        if (response.status === "SUCCESS") {
           $scope.post = response.data;
-          $scope.refreshing = !$scope.refreshing;
         }
       })
       .error(function (response, status, headers, config, scope) {
@@ -56,7 +52,8 @@ angular.module('angularCourseApp')
       })
     };
 
-    $scope.create = function(action){
+    $scope.newPost = function(){
+      actions(false, true, false, false);
       let data = {
         'title': $scope.post.title,
         'content': $scope.post.content
@@ -64,59 +61,62 @@ angular.module('angularCourseApp')
       $scope.refreshing = true;
       baseService.create($scope.url + 'create', data)
       .success(function (response) {
-        if (response.status = 200) {
+        if (response.status === "SUCCESS") {
           $scope.message = response.message;
           updateData();
-          utilService.show();
-          $scope.refreshing = !$scope.refreshing;
         }
       })
       .error(function (response, status, headers, config, scope) {
         console.log(response);
       })
+      $scope.refreshing = !$scope.refreshing;
     };
 
-    $scope.update = function(){
-      console.log($scope.post);
+    $scope.updatePost = function(){
       let data = {
         'title': $scope.post.title,
         'content': $scope.post.content
       }
-      $scope.showing = false;
+      actions(false, false, false, false);
       $scope.refreshing = true;
       baseService.update($scope.url + 'update/' + $scope.post.id, data)
       .success(function (response) {
-        if (response.status = 200) {
+        if (response.status === "SUCCESS") {
           $scope.posts = response.data;
           updateData();
-          $scope.refreshing = !$scope.refreshing;
         }
       })
       .error(function (response, status, headers, config, scope) {
         console.log(response);
       })
+      $scope.refreshing = !$scope.refreshing;
     };
 
-    $scope.destroy = function(id){
+    $scope.destroyPost = function(id){
       $scope.refreshing = true;
       baseService.destroy($scope.url + 'delete/', id)
       .success(function (response) {
-        if (response.status = 200) {
+        if (response.status === "SUCCESS") {
           updateData();
           $scope.post = '';
-          $scope.refreshing = !$scope.refreshing;
         }
       })
       .error(function (response, status, headers, config, scope) {
         console.log(response);
       })
+      $scope.refreshing = !$scope.refreshing;
     };
 
     // executado ao fechar o modal
     $scope.cancel = function(){
-      $scope.creating = false;
-      $scope.showing = true;
-      $scope.updating = false;
+      actions(true, false, false, false);
+    }
+
+    function actions(show, create, edit, update){
+      $scope.show = show;
+      $scope.create = create;
+      $scope.edit = edit;
+      $scope.update = update;
     }
 
   }]);

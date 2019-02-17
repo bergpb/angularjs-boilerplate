@@ -19,7 +19,7 @@
     "angular-mocks": "1.4.8"
   },
   "appPath": "app",
-  "moduleName": "angularCourseApp",
+  "moduleName": "angularBoilerplate",
   "overrides": {
     "bootstrap": {
       "main": [

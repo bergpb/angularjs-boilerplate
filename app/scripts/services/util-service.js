@@ -2,12 +2,12 @@
 //
 // /**
 //  * @ngdoc service
-//  * @name angularCourseApp.utilService
+//  * @name angularBoilerplate.utilService
 //  * @description
 //  * # utilService
-//  * Service in the angularCourseApp.
+//  * Service in the angularBoilerplate.
 //  */
-// angular.module('angularCourseApp')
+// angular.module('angularBoilerplate')
 // .service('utilService', function () {
 //     this.show = function () {
 //         // SweetAlert.swal("Here's a message!", "It's pretty, isn't it?");

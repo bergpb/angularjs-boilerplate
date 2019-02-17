@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name angularCourseApp
+ * @name angularBoilerplate
  * @description
- * # angularCourseApp
+ * # angularBoilerplate
  *
  * Main module of the application.
  */
 angular
-  .module('angularCourseApp', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch'])
+  .module('angularBoilerplate', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch'])
     .config(function ($routeProvider, $locationProvider) {
       $routeProvider
         .when('/', {
