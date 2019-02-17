@@ -9,24 +9,15 @@
  * Main module of the application.
  */
 angular
-  .module('angularBoilerplate', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch'])
+  .module('angularBoilerplate', ['ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch', 'swangular'])
     .config(function ($routeProvider, $locationProvider) {
       $routeProvider
         .when('/', {
           templateUrl: 'views/main.html',
-          controller: 'MainCtrl'
         })
         .when('/posts', {
           templateUrl: 'views/posts.html',
           controller: 'PostCtrl'
-        })
-        .when('/about', {
-          templateUrl: 'views/about.html',
-          controller: 'AboutCtrl'
-        })
-        .when('/contact', {
-          templateUrl: 'views/contact.html',
-          controller: 'ContactCtrl'
         })
         .otherwise({
           redirectTo: '/'

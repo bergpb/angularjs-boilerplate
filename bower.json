@@ -12,8 +12,7 @@
     "bootstrap": "^4.3.1",
     "jquery": "",
     "components-font-awesome": "^4.7.0",
-    "angular-sweetalert": "",
-    "sweetalert": ""
+    "swangular": ""
   },
   "devDependencies": {
     "angular-mocks": "1.4.8"

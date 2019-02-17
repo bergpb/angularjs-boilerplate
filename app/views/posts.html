@@ -6,10 +6,10 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Código</th>
-          <th>Título</th>
-          <th>Descrição</th>
-          <th>Ações</th>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Content</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -18,10 +18,10 @@
           <td align="left">{{ post.title }}</td>
           <td align="left">{{ post.content }}</td>
           <td>
-            <button ng-href="/" title="Exibir" ng-click="showPost(post.id)" data-toggle="modal" data-target="#modalPost" class="btn btn-success">
+            <button ng-href="/" title="Show" ng-click="showPost(post.id)" data-toggle="modal" data-target="#modalPost" class="btn btn-success">
               <i class="fa fa-eye" aria-hidden="true"></i>
             </button>
-            <button ng-href="/" title="Remover" ng-click="destroyPost(post.id)" class="btn btn-danger">
+            <button ng-href="/" title="Remove" ng-click="destroyPost(post.id)" class="btn btn-danger">
               <i class="fa fa-trash-o" aria-hidden="true"></i>
             </button>
           </td>
@@ -30,7 +30,7 @@
     </table>
   </div>
   <div class="mt-4 mb-4 col-md-6 offset-md-5" ng-if="posts != undefined && posts.length == 0">
-    <p>Sem posts para exibir.</p>
+    <p>Ops! You dont have any post to show.</p>
   </div>
 </div>
 <div>
@@ -42,7 +42,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalPost">Novo Post</h5>
+        <h5 class="modal-title" id="modalPost">New Post</h5>
         <button title="Fechar" ng-click="cancel()" type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -51,27 +51,27 @@
         <div class="col-md-8 offset-md-2">
           <form>
             <div class="form-group">
-              <label for="titulo">Título:</label>
-              <input ng-disabled="show" type="text" ng-model="post.title" class="form-control" id="titulo">
+              <label for="title">Title:</label>
+              <input ng-disabled="show" type="text" ng-model="post.title" class="form-control" id="title">
             </div>
             <div class="form-group">
-              <label for="conteudo">Conteúdo:</label>
-              <textarea ng-disabled="show" type="text" ng-model="post.content" class="form-control" id="conteudo"></textarea>
+              <label for="content">Content:</label>
+              <textarea ng-disabled="show" type="text" ng-model="post.content" class="form-control" id="content"></textarea>
             </div>
           </form>
         </div>
       </div>
       <div class="modal-footer">
-        <button title="Novo Post" ng-click="newPost()" ng-show="create" type="submit" data-dismiss="modal" class="btn btn-success">
+        <button title="New Post" ng-click="newPost()" ng-show="create" type="submit" data-dismiss="modal" class="btn btn-success">
           <i class="fa fa-save" aria-hidden="true"></i>
         </button>
-        <button title="Atualizar" ng-click="updatePost()" ng-show="update" type="submit" data-dismiss="modal" class="btn btn-success">
+        <button title="Update" ng-click="updatePost()" ng-show="update" type="submit" data-dismiss="modal" class="btn btn-success">
           <i class="fa fa-save" aria-hidden="true"></i>
         </button>
-        <button title="Editar" ng-click="editPost()" ng-show="edit" type="submit" class="btn btn-info">
+        <button title="Edit" ng-click="editPost()" ng-show="edit" type="submit" class="btn btn-info">
           <i class="fa fa-edit" aria-hidden="true"></i>
         </button>
-        <button title="Cancelar" ng-click="cancel()" type="button" class="btn btn-danger" data-dismiss="modal">
+        <button title="Cancel" ng-click="cancel()" type="button" class="btn btn-danger" data-dismiss="modal">
           <i class="fa fa-times" aria-hidden="true"></i>
         </button>
       </div>

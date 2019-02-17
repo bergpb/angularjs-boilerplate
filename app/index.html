@@ -10,7 +10,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
-    <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css" />
+    <link rel="stylesheet" href="bower_components/sweetalert2/dist/sweetalert2.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -22,17 +22,15 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- Add your site or application content here -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#/posts">AngularJS</a>
+    <nav class="navbar navbar-expand-md navbar-expand-sm navbar-dark bg-dark justify-content-between">
+      <a class="navbar-brand" href="#/">AngularJS</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item"><a class="nav-link" ng-href="#/posts">Listar Posts</a></li>
-          <li class="nav-item"><a class="nav-link" ng-href="#/about">Sobre</a></li>
-          <li class="nav-item"><a class="nav-link" ng-href="#/contact">Contato</a></li>
+          <li class="nav-item"><a class="nav-link" ng-href="#/posts">List Posts</a></li>
         </ul>
       </div>
     </nav>
@@ -40,12 +38,6 @@
     <div class="container mt-4">
       <div ng-view=""></div>
     </div>
-
-    <!-- <div class="footer">
-      <div class="container">
-        <p>A simple AngularJs Boilerplate</p>
-      </div>
-    </div> -->
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -58,18 +50,14 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="bower_components/angular-sweetalert/SweetAlert.js"></script>
+    <script src="bower_components/sweetalert2/dist/sweetalert2.js"></script>
+    <script src="bower_components/swangular/swangular.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/contact.js"></script>
-    <script src="scripts/controllers/about.js"></script>
     <script src="scripts/controllers/post.js"></script>
-    <script src="scripts/services/util-service.js"></script>
     <script src="scripts/services/base-service.js"></script>
     <!-- endbuild -->
 </body>
